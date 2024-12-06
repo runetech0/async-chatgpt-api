@@ -1,11 +1,11 @@
 from chatgpt.enums import Endpoint, Model, Role
 from chatgpt.errors import ChatGPTGeneralError
-from .types import RequestDictT
-from .basic_model import BaseModel
+from ..types import RequestDictT
+from ._base import Base
 
 
-class GPT35_Turbo(BaseModel):
-    def __init__(self, api_key: str, temperature: float = 1.0) -> None:
+class GPT4oMini(Base):
+    def __init__(self, api_key: str, temperature: float = 1) -> None:
         super().__init__(
             api_key,
             Model.GPT_35_TURBO,
@@ -15,8 +15,8 @@ class GPT35_Turbo(BaseModel):
 
     async def system_prompt(self, prompt: str) -> str:
         data: RequestDictT = {
-            "model": self.model,
-            "temperature": self.temperature,
+            "model": self._model,
+            "temperature": self._temperature,
             "messages": [
                 {"role": Role.SYSTEM, "content": prompt},
             ],
