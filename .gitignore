@@ -19,3 +19,4 @@ build
 config.toml
 .mypy_cache
 .vscode
+*egg-info
