@@ -9,9 +9,9 @@ build-backend = "setuptools.build_meta"
 
 
 name = "async-chatgpt-api"
-version = "0.1.0"
+version = "0.2.0"
 
-description = "Async ChatGPT API wrapper"
+description = "Async OpenAI API wrapper - [Incomplete]"
 
 authors = [
     {name = "Rune Tech", email = "runetech2024@gmail.com"}
@@ -42,7 +42,7 @@ pre_commit_hook = ""
 post_commit_hook = ""
 commit = true
 tag = true
-push = false
+push = true
 
 [tool.bumpver.file_patterns]
 

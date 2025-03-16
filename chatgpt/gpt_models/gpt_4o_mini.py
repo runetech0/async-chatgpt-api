@@ -1,6 +1,6 @@
 from chatgpt.enums import Endpoint, Model, Role
-from chatgpt.errors import ChatGPTGeneralError
-from ..types import RequestDictT
+from chatgpt.errors import OpenAIAPIError
+from ..types import GeneralDict
 from ._base import Base
 
 
@@ -9,12 +9,12 @@ class GPT4oMini(Base):
         super().__init__(
             api_key,
             Model.GPT_35_TURBO,
-            Endpoint.CHAT_COMPLETION,
+            Endpoint.CHAT_COMPLETION_V1,
             temperature=temperature,
         )
 
     async def system_prompt(self, prompt: str) -> str:
-        data: RequestDictT = {
+        data: GeneralDict = {
             "model": self._model,
             "temperature": self._temperature,
             "messages": [
@@ -24,5 +24,5 @@ class GPT4oMini(Base):
 
         resp = await self._request(data)
         if resp.get("error", False):
-            raise ChatGPTGeneralError(f"Open AI ChatGPT API says: {resp}")
+            raise OpenAIAPIError(f"Open AI ChatGPT API says: {resp}")
         return str(resp["choices"][0]["message"]["content"])

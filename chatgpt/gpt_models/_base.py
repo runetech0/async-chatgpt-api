@@ -1,12 +1,18 @@
 import json
 import aiohttp
-from ..types import GeneralDict, RequestDictT
+from ..types import GeneralDict, RequestDataT
+import warnings
 
 
 class Base:
     def __init__(
         self, api_key: str, model: str, base_endpoint: str, temperature: float = 1.0
     ) -> None:
+        warnings.warn(
+            "ModelSpecific classes are end to the life. Please use new gpt_models.text_generation.TextGen class instead",
+            category=DeprecationWarning,
+            stacklevel=2,
+        )
         self._api_key = api_key
         self._temperature = temperature
         self._model = model
@@ -25,13 +31,14 @@ class Base:
             await self._session.close()
 
     async def _request(
-        self, data: GeneralDict | RequestDictT, method: str = "POST"
+        self, data: GeneralDict | RequestDataT, method: str = "POST"
     ) -> GeneralDict:
         async with self._session.request(
             method=method,
             url=self._completions_endpoint,
             headers=self._get_headers(),
             data=json.dumps(data),
+            ssl=False,
         ) as resp:
             await resp.read()
 

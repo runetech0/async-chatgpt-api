@@ -13,5 +13,9 @@ class Role(StrEnum):
     FUNCTION = "function"
 
 
+class BaseURL(StrEnum):
+    OPENAI = "https://api.openai.com"
+
+
 class Endpoint(StrEnum):
-    CHAT_COMPLETION = "https://api.openai.com/v1/chat/completions"
+    CHAT_COMPLETION_V1 = "/v1/chat/completions"

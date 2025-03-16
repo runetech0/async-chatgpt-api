@@ -2,5 +2,5 @@ class ChatGPTBaseException(Exception):
     pass
 
 
-class ChatGPTGeneralError(ChatGPTBaseException):
+class OpenAIAPIError(ChatGPTBaseException):
     pass

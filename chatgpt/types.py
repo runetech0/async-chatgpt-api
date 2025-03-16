@@ -1,4 +1,5 @@
-from typing import Any, TypeAlias, TypedDict
+from enum import StrEnum
+from typing import Any, Literal, TypeAlias, TypedDict, Optional
 
 
 GeneralDict: TypeAlias = dict[str, Any]
@@ -9,7 +10,23 @@ class MessageDictT(TypedDict):
     content: str
 
 
-class RequestDictT(TypedDict):
-    model: str
-    temperature: float
-    messages: list[MessageDictT]
+class Role(StrEnum):
+    DEVELOPER = "developer"
+    USER = "user"
+    ASSISTANT = "assistant"
+
+
+class ContentT(TypedDict):
+    type: Literal["text"]
+    text: str
+
+
+class MessageT(TypedDict):
+    role: Role
+    content: list[ContentT]
+
+
+class RequestDataT(TypedDict):
+    model: Optional[str]
+    temperature: Optional[float]
+    messages: list[MessageT]
