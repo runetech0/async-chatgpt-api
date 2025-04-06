@@ -1,4 +1,4 @@
-from chatgpt.enums import Endpoint, Model, Role
+from chatgpt.enums import Endpoint, OpenAIModels, Role
 from chatgpt.errors import OpenAIAPIError
 from ..types import GeneralDict
 from ._base import Base
@@ -8,7 +8,7 @@ class GPT35_Turbo(Base):
     def __init__(self, api_key: str, temperature: float = 1.0) -> None:
         super().__init__(
             api_key,
-            Model.GPT_35_TURBO,
+            OpenAIModels.GPT_35_TURBO,
             Endpoint.CHAT_COMPLETION_V1,
             temperature=temperature,
         )
