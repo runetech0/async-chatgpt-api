@@ -32,7 +32,7 @@ Homepage = "https://github.com/runetech0/async-chatgpt-api"
 github = "https://github.com/runetech0/async-chatgpt-api"
 
 [tool.bumpver]
-current_version = "1.0.4"
+current_version = "1.0.3"
 version_pattern = "MAJOR.MINOR.PATCH"
 commit_message = "bump version {old_version} -> {new_version}"
 tag_message = "{new_version}"
@@ -49,6 +49,7 @@ push = true
 
 "pyproject.toml" = [
     'current_version = "{version}"',
+    'version = "{version}"',
 ]
 
 "chatgpt/__init__.py" = [
