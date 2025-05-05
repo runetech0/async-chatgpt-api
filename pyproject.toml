@@ -9,7 +9,7 @@ build-backend = "setuptools.build_meta"
 
 
 name = "async-chatgpt-api"
-version = "1.0.2"
+version = "1.0.3"
 description = "Async OpenAI API wrapper - [Incomplete]"
 
 authors = [

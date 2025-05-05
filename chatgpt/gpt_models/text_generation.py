@@ -59,7 +59,7 @@ class TextGen:
         js_resp = dict(await resp.json())
 
         if js_resp.get("error", False):
-            raise OpenAIAPIError(f"Open AI ChatGPT API says: {resp}")
+            raise OpenAIAPIError(f"Open AI ChatGPT API says: {await resp.text()}")
 
         return str(js_resp["choices"][0]["message"]["content"])
 
